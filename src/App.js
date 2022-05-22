@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { UserLogin, Home, UserRegister, App as AppCmp, Project } from './components/module';
+import { Route, Routes, HashRouter } from 'react-router-dom'
+import SimpletRoutes from './helper/Routes'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <Routes>
+        <Route path={SimpletRoutes.HOME.INDEX} element={<Home />} exact />
+        <Route path={SimpletRoutes.HOME.LOGIN} element={<UserLogin />} exact />
+        <Route path={SimpletRoutes.HOME.REGISTER} element={<UserRegister />} exact />
+        <Route path={SimpletRoutes.APP.INDEX} element={<AppCmp />} exact />
+        <Route path={SimpletRoutes.PROJECT.INDEX} element={<Project />} exact />
+        <Route path='*' element={<h1>404</h1>} />
+      </Routes>
+    </HashRouter>
   );
 }
 
-export default App;
+export default App
